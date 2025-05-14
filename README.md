@@ -104,6 +104,22 @@ Then open your browser and go to: `http://127.0.0.1:5000`
 
 ---
 
+## Dataset
+- **ISL Dataset**:
+  - 35 Classes: A-Z and 1-9.
+  - 1,200 grayscale images per class.
+  - Adaptive thresholding applied to enhance feature extraction.
+
+| **Class** | **Examples** | **Processed Images** |
+|-----------|--------------|----------------------|
+| A-Z       | Letters      | Adaptive Thresholding |
+| 1-9       | Numbers      | Adaptive Thresholding |
+
+
+![Uploading image.png…]()
+
+
+
 ## 📊 Model Training
 
 * Dataset: Collected ISL signs stored in `data/`
