@@ -19,13 +19,21 @@ A real-time web application to detect and recognize **Indian Sign Language (ISL)
 ---
 
 🖼️ Screenshot
+
+
 First _module :
+
+
+
 ![First_Module](https://github.com/user-attachments/assets/62925a7f-2d10-4258-8fec-84df36ddf1c9)
 
 
 
 
 Second Module :
+
+
+
 ![Second_module](https://github.com/user-attachments/assets/1270cdde-f61c-40a2-b386-47bdc2d4241e)
 
 
