@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Language to Sentence</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1abc9c;
+      --danger: #e74c3c;
+      --light: #ecf0f1;
+      --dark: #2c3e50;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #2c3e50, #4ca1af);
+      color: var(--light);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem;
+      min-height: 100vh;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      padding: 1.5rem 2rem;
+      border-radius: 16px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      max-width: 700px;
+      width: 100%;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    #video {
+      width: 100%;
+      max-height: 300px;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      border: 2px solid #ffffff33;
+    }
+
+    .suggestions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .suggestions button {
+      background-color: #ffffff15;
+      border: 1px solid var(--primary);
+      color: #fff;
+      padding: 0.5rem 0.8rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .suggestions button:hover {
+      background-color: var(--primary);
+      transform: scale(1.05);
+    }
+
+    .sentence-box, .translated-box {
+      background-color: #ffffff10;
+      padding: 0.7rem;
+      border-radius: 10px;
+      margin-top: 0.8rem;
+      font-size: 1rem;
+      min-height: 30px;
+    }
+
+    .translated-box {
+      color: #f1c40f;
+      font-style: italic;
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .button-group button {
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      background-color: var(--primary);
+      transition: background-color 0.3s ease;
+    }
+
+    .button-group button:hover {
+      background-color: #16a085;
+    }
+
+    .button-group button:last-child {
+      background-color: var(--danger);
+    }
+
+    .button-group button:last-child:hover {
+      background-color: #c0392b;
+    }
+
+    @media screen and (max-width: 480px) {
+      .container {
+        padding: 1rem;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .button-group {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Sign Language Recognition</h1>
+    <img src="{{ url_for('video_feed') }}" id="video" alt="Live Feed">
+
+    <div class="suggestions" id="suggestions">
+      <!-- Word suggestions appear here -->
+    </div>
+
+    <div class="sentence-box" id="sentence">🤖 Your sentence will appear here...</div>
+    <div class="translated-box" id="translated">🌐 अनुवाद: </div>
+
+    <div class="button-group">
+      <button onclick="speakSentence()">🔊 Speak Hindi</button>
+      <button onclick="clearSentence()">🧹 Clear Sentence</button>
+    </div>
+  </div>
+
+  <script>
+    let sentence = "";
+
+    function fetchSuggestions() {
+      fetch('/get_prediction')
+        .then(res => res.json())
+        .then(data => {
+          const sugDiv = document.getElementById("suggestions");
+          sugDiv.innerHTML = "";
+          data.forEach(word => {
+            const btn = document.createElement("button");
+            btn.textContent = word;
+            btn.onclick = () => {
+              sentence += " " + word;
+              document.getElementById("sentence").innerText = sentence.trim();
+              translateSentence();
+            };
+            sugDiv.appendChild(btn);
+          });
+        });
+    }
+
+    function translateSentence() {
+      fetch('/translate', {
+        method: 'POST',
+        body: JSON.stringify({ text: sentence }),
+        headers: { 'Content-Type': 'application/json' }
+      })
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("translated").innerText = "🌐 अनुवाद: " + data.translated_text;
+      });
+    }
+
+    function speakSentence() {
+      const hindi = document.getElementById("translated").innerText.replace("🌐 अनुवाद: ", "");
+      fetch('/speak', {
+        method: 'POST',
+        body: JSON.stringify({ text: hindi }),
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+
+    function clearSentence() {
+      sentence = "";
+      document.getElementById("sentence").innerText = "🤖 Your sentence will appear here...";
+      document.getElementById("translated").innerText = "🌐 अनुवाद: ";
+    }
+
+    setInterval(fetchSuggestions, 2000);
+  </script>
+</body>
+</html>

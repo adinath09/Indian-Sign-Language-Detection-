@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ISL Detection Project</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f0f2f5;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .hero-section {
+      position: relative;
+      background-image: url('https://static.vecteezy.com/system/resources/previews/028/242/417/non_2x/international-day-of-sign-languages-a-pair-of-deaf-and-mute-people-using-sign-language-to-communicate-a-man-and-a-woman-with-hearing-impairment-vector.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 100vh; /* Full screen height */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 0;
+    }
+
+    .hero-section h1,
+    .hero-section p,
+    .hero-section a {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-section h1 {
+      font-size: 60px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .hero-section p {
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+
+    .hero-section a button {
+      background-color: #007BFF;
+      color: white;
+      padding: 15px 35px;
+      font-size: 18px;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .hero-section a button:hover {
+      background-color: #0056b3;
+    }
+
+    .section {
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: #222;
+    }
+
+    .section p {
+      max-width: 800px;
+      margin: 0 auto 30px;
+      font-size: 18px;
+      color: #555;
+    }
+
+    .feature-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .feature-card img {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 20px;
+    }
+
+    .feature-card h3 {
+      font-size: 22px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .feature-card p {
+      color: #666;
+      font-size: 16px;
+    }
+
+    footer {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero-section">
+    <h1>Welcome to the ISL Detection</h1>
+    <p>Revolutionizing communication for the hearing impaired with cutting-edge technology.</p>
+    <a href="{{ url_for('home') }}">
+      <button type="button">Learn More</button>
+    </a>
+  </section>
+
+  <section class="section">
+    <h2>Key Features</h2>
+    <div class="feature-cards">
+      <div class="feature-card">
+        <img src="{{ url_for('static', filename='images/hand.jpg') }}" alt="Real-Time Detection">
+        <h3>Real-Time Detection</h3>
+        <p>Our system detects ISL signs in real-time with high accuracy for seamless communication.</p>
+      </div>
+      <div class="feature-card">
+        <img src="{{ url_for('static', filename='images/speech-text.jpg') }}" alt="Text & Speech Output">
+        <h3>Text & Speech Output</h3>
+        <p>ISL signs are instantly converted into text and speech for enhanced accessibility.</p>
+      </div>
+      <div class="feature-card">
+        <img src="{{ url_for('static', filename='images/twohand.jpg') }}" alt="Two-Hand Recognition">
+        <h3>Two-Hand Sign Recognition</h3>
+        <p>The system can recognize complex two-handed ISL signs for a more comprehensive experience.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 ISL Detection Project. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
