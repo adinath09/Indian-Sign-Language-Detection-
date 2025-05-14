@@ -1,3 +1,7 @@
+It looks like you're working on an Indian Sign Language (ISL) Detection project with real-time hand gesture recognition. Below is a preview of the output structure and details for your project. This includes features, folder structure, getting started guide, and more:
+
+---
+
 # Indian Sign Language Detection 🤟
 
 A real-time web application to detect and recognize **Indian Sign Language (ISL)** gestures using computer vision and deep learning.
@@ -6,18 +10,28 @@ A real-time web application to detect and recognize **Indian Sign Language (ISL)
 
 ## 📌 Features
 
-- ✅ Real-time hand gesture recognition via webcam
-- ✅ Trained CNN-based model on ISL alphabet
-- ✅ Web interface built using Flask
-- ✅ Modular code structure (training, camera, inference)
-- ✅ Interactive UI with HTML templates and static styling
+* ✅ Real-time hand gesture recognition via webcam
+* ✅ Trained CNN-based model on ISL alphabet
+* ✅ Web interface built using Flask
+* ✅ Modular code structure (training, camera, inference)
+* ✅ Interactive UI with HTML templates and static styling
 
 ---
+
+🖼️ Screenshot
+First _module :
+![First_Module](https://github.com/user-attachments/assets/62925a7f-2d10-4258-8fec-84df36ddf1c9)
+
+
+
+
+Second Module :
+![Second_module](https://github.com/user-attachments/assets/1270cdde-f61c-40a2-b386-47bdc2d4241e)
+
 
 ## 🗂️ Folder Structure
 
 ```
-
 Indian-Sign-Language-Detection-/
 │
 ├── data/                    # ISL image dataset
@@ -29,8 +43,7 @@ Indian-Sign-Language-Detection-/
 ├── app.py                   # Main Flask web application
 ├── camera.py                # Webcam handling using OpenCV
 └── requirements.txt         # Required packages
-
-````
+```
 
 ---
 
@@ -41,7 +54,7 @@ Indian-Sign-Language-Detection-/
 ```bash
 git clone https://github.com/adinath09/Indian-Sign-Language-Detection-.git
 cd Indian-Sign-Language-Detection-
-````
+```
 
 ### 2. Create & Activate a Virtual Environment (Optional)
 
@@ -97,4 +110,8 @@ Then open your browser and go to: `http://127.0.0.1:5000`
 
 **Adinath Nage**
 [GitHub](https://github.com/adinath09)
-[LinkedIn](https://linkedin.com/in/adinathnage
+[LinkedIn](https://linkedin.com/in/adinathnage)
+
+---
+
+This gives a comprehensive overview of your project and allows easy setup and deployment for others to try the system.
