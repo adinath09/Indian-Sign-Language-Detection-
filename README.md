@@ -1,6 +1,4 @@
-It looks like you're working on an Indian Sign Language (ISL) Detection project with real-time hand gesture recognition. Below is a preview of the output structure and details for your project. This includes features, folder structure, getting started guide, and more:
 
----
 
 # Indian Sign Language Detection 🤟
 
