@@ -1,6 +1,6 @@
 
 
-# Indian Sign Language Detection 🤟
+# Indian Sign Language Detection
 
 A real-time web application to detect and recognize **Indian Sign Language (ISL)** gestures using computer vision and deep learning.
 
